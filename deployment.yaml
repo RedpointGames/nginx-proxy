@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: reverse-proxy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: reverse-proxy
+    spec:
+      containers:
+      - name: reverse-proxy
+        image: redpointgames/nginx-proxy
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /tmp/docker.sock
+          name: docker-api
+          readOnly: true
+        ports:
+        - containerPort: 80
+          hostPort: 80
+        - containerPort: 443
+          hostPort: 443
+      volumes:
+      - name: docker-api
+        hostPath:
+          path: /var/run/docker.sock
