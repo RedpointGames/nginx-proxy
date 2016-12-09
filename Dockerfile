@@ -1,5 +1,5 @@
 FROM nginx:1.11.6
-MAINTAINER Jason Wilder mail@jasonwilder.com
+MAINTAINER June Rhodes jrhodes@redpointgames.com.au
 
 # Install wget and install/updates certificates
 RUN apt-get update \
