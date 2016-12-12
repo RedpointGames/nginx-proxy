@@ -17,6 +17,9 @@ spec:
         - mountPath: /tmp/docker.sock
           name: docker-api
           readOnly: true
+        - mountPath: /etc/nginx/certs
+          name: ssl-certificates
+          readOnly: true
         ports:
         - containerPort: 80
           hostPort: 80
@@ -26,3 +29,7 @@ spec:
       - name: docker-api
         hostPath:
           path: /var/run/docker.sock
+      - name: ssl-certificates
+        secret:
+          secretName: ssl-certificates
+        
