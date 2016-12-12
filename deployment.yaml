@@ -13,6 +13,9 @@ spec:
       - name: reverse-proxy
         image: redpointgames/nginx-proxy
         imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 0m
         volumeMounts:
         - mountPath: /tmp/docker.sock
           name: docker-api
