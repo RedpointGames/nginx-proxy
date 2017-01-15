@@ -1,0 +1,13 @@
+#!/bin/bash
+
+while [ 0 -eq 0 ]; do
+  echo "Attempting to reload Nginx..."
+  nginx -s reload
+  if [ $? -eq 0 ]; then
+    echo "Nginx reloaded successfully"
+    exit 0
+  fi
+
+  echo "Nginx didn't reload.  Sleeping for 1 second..."
+  sleep 1
+done
