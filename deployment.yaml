@@ -50,10 +50,12 @@ spec:
   selector:
     app: reverse-proxy
   ports:
-  - protocol: TCP
+  - name: rp-http
+    protocol: TCP
     port: 80
     targetPort: 80
-  - protocol: TCP
+  - name: rp-https
+    protocol: TCP
     port: 443
     targetPort: 443
   type: LoadBalancer
