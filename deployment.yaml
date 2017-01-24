@@ -49,6 +49,7 @@ metadata:
 spec:
   selector:
     app: reverse-proxy
+  loadBalancerIP: 104.154.189.88
   ports:
   - name: rp-http
     protocol: TCP
