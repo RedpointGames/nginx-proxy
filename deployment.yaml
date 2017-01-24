@@ -25,9 +25,7 @@ spec:
           readOnly: true
         ports:
         - containerPort: 80
-          hostPort: 80
         - containerPort: 443
-          hostPort: 443
         livenessProbe:
           exec:
             command:
@@ -43,4 +41,19 @@ spec:
       - name: ssl-certificates
         secret:
           secretName: ssl-certificates
-        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reverse-proxy-lb
+spec:
+  selector:
+    app: reverse-proxy
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  - protocol: TCP
+    port: 443
+    targetPort: 443
+  type: LoadBalancer
